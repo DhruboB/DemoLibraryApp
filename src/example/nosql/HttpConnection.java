@@ -89,7 +89,7 @@ public class HttpConnection {
 		properties = new Properties();
 		InputStream inStream;
 		try {
-			inStream = HttpConnection.class.getClassLoader().getResourceAsStream("config.properties");
+			inStream = HttpConnection.class.getClassLoader().getResourceAsStream("conf.properties");
 			if(inStream!=null) {
 			properties.load(inStream );
 			}else {
