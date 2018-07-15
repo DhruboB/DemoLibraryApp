@@ -101,17 +101,44 @@ div#contains1{
    <img alt="" src="https://ladeetdareads.files.wordpress.com/2015/03/tree-of-knowledge-books.jpg" class="stretch">
   </div>
   <div id="contains1">
-   <font color="blue" style="font-family:lucida handwriting;font-weight:bold;font-size:70%;">Developed by Team<span class="tab"></span> <span
-      class="redtxt" >Dhrubo</span>   </font>
-   </div>
-  
-    <div align="center" style="float : center;"><h2>Search your Book Here</h2></div><form action="/OnlineBookStoreWebApp/EditProfile"  method="post"><div style="float:right;color:blue;">Logged in as :<input name="user" id="user" type="text" style="border:none;color:red;font-weight:bold;margin-right:50px;" size="7" value="<%= request.getAttribute("user")==null?"Guest":request.getAttribute("user") %>" readonly /></div>
-    <div style="float:right;margin-right:110px;margin-top:17px;"><input type="submit" style="padding-top:7px;padding-bottom:5px;-moz-border-radius:8px;
-   -webkit-border-radius: 8px" value="Edit Profile" ></div></form>
-    <form onclick="newrespond()" action="http://onlinelibrary.bluemix.net/">
-    <input id="logout" name="logout" type="submit" value="Log Out" style="float:right;margin-right:-390px;margin-top:-3px;padding-top:3px;padding-bottom:5px; -moz-border-radius:7px;
-   -webkit-border-radius: 7px;"></form><br>
-  <form id="SearchForm" name="SearchForm" method="post" onsubmit="return validateForm();" action="/OnlineBookStoreWebApp/Search">
+   <font color="blue" style="font-family:lucida handwriting;font-weight:bold;font-size:70%;">Developed by <span class="tab"></span> <span
+      class="redtxt">Dhrubo</span>   </font>
+   </div>	  
+    <div align="center" style="float : center;"><h2>Search your Book Here</h2></div>
+    <div align="right" style="float : right;">
+	<table >
+		<tr>
+			<td>
+				<div>
+					<label style="color: blue;">Logged in as :</label> 
+					<label
+						style="border: none; color: red; font-weight: bold; margin-right: 5px"><%=request.getAttribute("user") == null ? "Guest" : request.getAttribute("user")%>
+					</label>
+				</div>
+			</td>
+			<td>
+				<div style="float: right; margin-right: 20px; margin-top: 10px;">
+					<form action="/OnlineBookStoreWebApp/EditProfile" method="post">
+						<input type="hidden" name="user" value="<%= request.getAttribute("user")==null?"Guest":request.getAttribute("user") %>">
+						<input type="submit"
+							style="padding-top: 7px; padding-bottom: 5px; -moz-border-radius: 8px; -webkit-border-radius: 8px"
+							value="Edit Profile">
+					</form>
+				</div>
+			</td>
+			<td>
+				<div style="float: right; margin-right: 20px; margin-top: 10px;">
+					<form action="Newindex.jsp">
+						<input id="logout" name="logout" type="submit" value="Log Out"
+							onclick="logoutMsg()"
+							style="padding-top: 7px; padding-bottom: 5px; -moz-border-radius: 8px; -webkit-border-radius: 8px">
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<form id="SearchForm" name="SearchForm" method="post" onsubmit="return validateForm();" action="/OnlineBookStoreWebApp/Search">
   <div style="align:center;">
   <select class="css1" id ="searchBy" name="searchBy">
       <option value = "Author">Author</option>
@@ -169,7 +196,7 @@ function validateForm(SearchForm)
     }
 	return valid;
     }  
-function newrespond(){
+function logoutMsg()(){
 	alert("You have Successfully Logged Out...");
 }
 </script>

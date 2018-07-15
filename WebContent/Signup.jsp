@@ -43,11 +43,11 @@ For Best View Open Site Using : <i class="fa fa-chrome" style="font-size:25px;co
 bottom:15px;
 width:99%;
 font-family:lucida handwriting;
-font-size:75%;"><font color="blue"style="float:right ;margin-right:30px;">Developed by Team  <span
+font-size:75%;"><font color="blue"style="float:right ;margin-right:30px;">Developed by <span
 style="color:red;
 font-weight:bold;
 font-size:120%;
-text-decoration:underline;float:right;margin-left:10px;"> Dhrubo</span>   </font></h3>
+text-decoration:underline;float:right;margin-left:10px;">Dhrubo</span>   </font></h3>
 </div>
 </div>
 <script type="text/Javascript">

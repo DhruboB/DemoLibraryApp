@@ -26,12 +26,44 @@ div#calledvalue{
 </head>
 <body>
 <h1 align="center" ><b style="color:blue;">Issue Your Book Here</b></h1>
-<form onclick="newrespond()" action="http://onlinelibrary.bluemix.net/">
+
+
+<%-- <form onclick="newrespond()" action="http://onlinelibrary.bluemix.net/">
  <a style="float:right;margin-right:50px;"><label style="color:blue;font-weight:bold"> 
  Logged in as : </label>
- <input name="input1" id="input1" type="text" style="border:none;color:red;font-weight:bold;margin-right:20px" size="7" value="<%= request.getAttribute("user")==null?"Guest":request.getAttribute("user") %>" readonly /></a><br>
+ <input name="input1" id="input1" type="text" style="border:none;color:red;font-weight:bold;margin-right:20px" size="7" value="<%= request.getAttribute("user")==null?"Guest":request.getAttribute("user") %>" readonly />
+ <label style="border:none;color:red;font-weight:bold;margin-right:20px"><%= request.getAttribute("user")==null?"Guest":request.getAttribute("user") %>"</label>
+ </a>
+ <br>
  <a style="float:right;margin-right:10px;margin-top:-22px;"><input id="logout" name="logout" type="submit" value="Log Out" style="width:80px;height:30px;-moz-border-radius: 15px;
-   -webkit-border-radius: 15px;"></a></form>
+   -webkit-border-radius: 15px;"></a></form> --%>
+   
+ 
+ <div align="right" style="float : right;">
+	<table >
+		<tr>
+			<td>
+				<div>
+					<label style="color: blue;">Logged in as :</label> 
+					<label
+						style="border: none; color: red; font-weight: bold; margin-right: 5px"><%=request.getAttribute("user") == null ? "Guest" : request.getAttribute("user")%>
+					</label>
+				</div>
+			</td>
+			<td>
+				<div style="float: right; margin-right: 20px; margin-top: 10px;">
+					<form action="Newindex.jsp">
+						<input id="logout" name="logout" type="submit" value="Log Out"
+							onclick="logoutMsg()"
+							style="padding-top: 7px; padding-bottom: 5px; -moz-border-radius: 8px; -webkit-border-radius: 8px">
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
+	</div>
+ 
+   
 <div id="calledvalue" >
 <p align="left" style="padding-left : 5 px">Book Name : <%=request.getAttribute("BookName")%></p>
 <p align="left" style="padding-left : 5 px">Author   : <%=request.getAttribute("Author")%></p>
