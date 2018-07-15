@@ -21,11 +21,11 @@ import entities.Books;
 
 @WebServlet("/EditProfile")
 public class EditProfile extends HttpServlet {
-	public static String user;
-	public static String bookId;
-	public static String id;
-	public static String BookName;
-	static List<Books> result = new ArrayList<Books>();
+	private String user;
+	private String bookId;
+	private String id;
+	private String BookName;
+	private List<Books> result = new ArrayList<Books>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -41,7 +41,7 @@ public class EditProfile extends HttpServlet {
 		request.setAttribute("user", user);
 		request.setAttribute("bookId", bookId);
 		try {
-			EditProfile.main(null);
+			process();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class EditProfile extends HttpServlet {
 		requestDispatcher.forward(request, response);
 	}
 
-	public static void main(String args[]) throws JSONException, UnsupportedEncodingException {
+	public void process() throws JSONException, UnsupportedEncodingException {
 
 		String uname = URLEncoder.encode(user, "UTF-8");
 		String rUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL")+"_design/User/_search/byUserPass?q=username:@"

@@ -17,27 +17,9 @@ import org.json.JSONObject;
 
 @WebServlet("/TakeBook")
 public class TakeBook extends HttpServlet {
-	public static String user;
-	public static String BookName;
-	public static String BookId;
-	public static String id;
-	public static String _id;
-	public static String rev;
-	public static String idu;
-	public static String _idu;
-	public static String revu;
-	public static String Author;
-	public static String Subject;
-	public static String Rating;
-	public static String name;
-	public static String comments;
-	public static String username;
-	public static String password;
-	public static String Flag;
-	static String str1;
-	static String str2;
-	static String str3;
-	static String str4;
+	private String user;
+	private String BookName;
+	private String BookId;
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -54,7 +36,7 @@ public class TakeBook extends HttpServlet {
 		BookName = request.getParameter("BookName");
 		request.setAttribute("user", user);
 		try {
-			TakeBook.main(null);
+			process();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -62,11 +44,11 @@ public class TakeBook extends HttpServlet {
 		requestDispatcher.forward(request, response);
 	}
 
-	public static void main(String args[]) throws UnsupportedEncodingException, JSONException {
+	private void process() throws UnsupportedEncodingException, JSONException {
 		String idDemo = URLEncoder.encode(BookId, "UTF-8");
 		String restUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL") + idDemo;
 		HttpConnection obj1 = new HttpConnection();
-		str1 = obj1.fetchDetails(restUrl);
+		String str1 = obj1.fetchDetails(restUrl);
 		JSONObject res = new JSONObject(str1);
 		res.remove("Flag");
 		res.put("Flag", "1");
@@ -75,10 +57,9 @@ public class TakeBook extends HttpServlet {
 		obj3.sendPostRequest(requestUrl, res);
 
 		String idDemou = URLEncoder.encode(user, "UTF-8");
-		String restUrlid = HttpConnection.getProperties().getProperty("CLOUDANT_URL")
-				+ idDemou;
+		String restUrlid = HttpConnection.getProperties().getProperty("CLOUDANT_URL") + idDemou;
 		HttpConnection obj5 = new HttpConnection();
-		str3 = obj5.fetchDetails(restUrlid);
+		String str3 = obj5.fetchDetails(restUrlid);
 		JSONObject res2 = new JSONObject(str3);
 		JSONArray books = res2.getJSONArray("Books");
 		JSONObject obbj = new JSONObject();

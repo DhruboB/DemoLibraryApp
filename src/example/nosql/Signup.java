@@ -16,10 +16,10 @@ import org.json.JSONObject;
 
 @WebServlet("/Signup")
 public class Signup extends HttpServlet {
-	public static String user;
-	public static String u;
-	public static String pass;
-	public static JSONObject payload;
+	private String user;
+	private String u;
+	private String pass;
+	private JSONObject payload;
 	private static final long serialVersionUID = 1L;
 	private Boolean bool;
  
@@ -75,7 +75,7 @@ public class Signup extends HttpServlet {
 		}
 		
 		try {
-			Signup.main(null);
+			process();
 			String strViewPage="/OnlineBookStoreWebApp/Newindex.jsp";
 		    RequestDispatcher dispatcher = request.getRequestDispatcher(strViewPage);
 		    dispatcher.forward(request, response);
@@ -94,7 +94,7 @@ public class Signup extends HttpServlet {
 		
 	}
 	
-	public static void main(String[] args) throws JSONException{
+	private void process() throws JSONException{
 		String requestUrl=HttpConnection.getProperties().getProperty("CLOUDANT_URL");
 		HttpPost obj=new HttpPost();
 		obj.sendPostRequest(requestUrl, payload);

@@ -19,12 +19,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	public static String user;
-	public static String pass;
-	public static  String u;
-	public static String p;
+	private String user;
+	private String pass;
+	private String u;
+	private String p;
 	
-	public static String str1;
+	private String str1;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
 			
 			
 			try {
-				Login.main(null);
+				process();
 				if(user.equals(u) && pass.equals(p)){
 					request.setAttribute("user",u);
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("Search.jsp");
@@ -62,7 +62,7 @@ public class Login extends HttpServlet {
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 	            doGet(request, response);
 	   }
-	public static void main(String[] args) throws JSONException, UnsupportedEncodingException{
+	private void process() throws JSONException, UnsupportedEncodingException{
 		String usr=URLEncoder.encode(user, "UTF-8");
 		String restUrl=HttpConnection.getProperties().getProperty("CLOUDANT_URL")+"_design/User/_search/byUserPass?q=username:@"+usr;
 		HttpConnection obj=new HttpConnection();

@@ -20,17 +20,18 @@ import entities.Items;
 
 @WebServlet("/Search")
 public class Search extends HttpServlet {
-	public static String str1;
-    static String searchBy;
-    static String searchValue;
-    List<Items> result=new ArrayList<Items>();
+	private String str1;
+    private String searchBy;
+    private String searchValue;
+    private List<Items> result=new ArrayList<Items>();
 	private static final long serialVersionUID = 1L;
   
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 	}
-	public List<Items> find(){
+	
+	private  List<Items> find(){
 		 
 		
 		JSONObject res;
@@ -64,9 +65,8 @@ public class Search extends HttpServlet {
 			System.out.println("searchBy="+searchBy);
 			searchValue=request.getParameter("searchValue");
 			System.out.println("searchValue="+searchValue);
-			Search.main(null);
-			Search sr=new Search();
-			request.setAttribute("itemList", sr.find());
+			process();
+			request.setAttribute("itemList", find());
 			request.setAttribute("user", newStr);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Search.jsp");
 			requestDispatcher.forward(request, response);
@@ -76,7 +76,7 @@ public class Search extends HttpServlet {
 		}
 	}
 
-	public static void main(String args[]) throws JSONException{
+	private void process() throws JSONException{
 		
 		String str = null;
 		if(!searchValue.isEmpty() || searchValue.trim().length() != 0){

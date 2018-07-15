@@ -21,20 +21,18 @@ import entities.NewItems;
 
 @WebServlet("/IssueBook")
 public class IssueBook extends HttpServlet {
-	public static String user;
-	public static String BookName;
-	public static String BookId;
-	public static String Author;
-	public static String Subject;
-	public static String Rating;
-	public static String comment;
-	public static int Flag;
-	public static String setFlag;
-	public static String name;
-	public static String id;
-	static String str1;
-	static String str2;
-	static List<NewItems> result = new ArrayList<NewItems>();
+	private String user;
+	private String BookName;
+	private String BookId;
+	private String Author;
+	private String Subject;
+	private String Rating;
+	private String comment;
+	private int Flag;
+	private String setFlag;
+	private String name;
+	private String str1;
+	private List<NewItems> result = new ArrayList<NewItems>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -50,7 +48,7 @@ public class IssueBook extends HttpServlet {
 		user = request.getParameter("user");
 		System.out.println("BookName = " + BookName + " and User = " + user);
 		try {
-			IssueBook.main(null);
+			process();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -68,22 +66,7 @@ public class IssueBook extends HttpServlet {
 
 	}
 
-	public static void main(String args[]) throws JSONException, UnsupportedEncodingException {
-//		String BookID = URLEncoder.encode(BookId, "UTF-8");
-//		System.out.println("Printing the Book ID  to search for .. " + BookId);
-//		String rUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL")+ BookID;
-//		HttpConnection obj2 = new HttpConnection();
-//		str2 = obj2.fetchDetails(rUrl);
-//		JSONObject res1 = new JSONObject(str2);
-//		JSONArray jsonResArr1 = res1.getJSONArray("rows");
-//		if (jsonResArr1.length() == 0) {
-//			System.out.println("no details available");
-//		} else {
-//
-//			JSONObject jsonResElem1 = jsonResArr1.getJSONObject(0);
-//			id = jsonResElem1.getString("id");
-//			System.out.println("The id is" + id);
-//		}
+	private void process() throws JSONException, UnsupportedEncodingException {
 		String idDemo = URLEncoder.encode(BookId, "UTF-8");
 		String restUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL") + idDemo;
 		HttpConnection obj1 = new HttpConnection();

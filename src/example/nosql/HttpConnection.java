@@ -26,7 +26,7 @@ import org.json.JSONObject;
 @Consumes({MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN})
 public class HttpConnection {
 	//private String restUrl ="";
-	public String s;
+	private String s;
 	private static Properties properties;
 	@Path("/details")
 	@GET
