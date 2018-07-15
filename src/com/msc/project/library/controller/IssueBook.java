@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,7 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import entities.NewItems;
+import com.msc.project.library.entities.NewItems;
+import com.msc.project.library.utility.HttpConnection;
 
 @WebServlet("/IssueBook")
 public class IssueBook extends HttpServlet {

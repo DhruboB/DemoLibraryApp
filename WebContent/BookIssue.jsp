@@ -1,9 +1,10 @@
+<%@page import="com.msc.project.library.entities.NewItems"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ page import="java.util.List" %>
-<%@ page import="entities.NewItems" %>
+<%@ page import="com.msc.project.library.entities.NewItems %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

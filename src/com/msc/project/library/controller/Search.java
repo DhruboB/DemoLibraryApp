@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import entities.Items;
+import com.msc.project.library.entities.Items;
+import com.msc.project.library.utility.HttpConnection;
 
 
 @WebServlet("/Search")

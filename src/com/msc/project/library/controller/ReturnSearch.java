@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.controller;
 
 import java.io.IOException;
 

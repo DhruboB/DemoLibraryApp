@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ page import="java.util.List" %>
-<%@ page import="entities.Items" %>
+<%@ page import="com.msc.project.library.entities.Items" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

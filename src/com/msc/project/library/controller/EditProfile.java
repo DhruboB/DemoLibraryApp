@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,28 +17,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import entities.Books;
+import com.msc.project.library.entities.Books;
+import com.msc.project.library.utility.HttpConnection;
 
-@WebServlet("/SubmitBook")
-public class SubmitBook extends HttpServlet {
+@WebServlet("/EditProfile")
+public class EditProfile extends HttpServlet {
 	private String user;
-	private String BookId;
-	private static List<Books> result = new ArrayList<Books>();
+	private String bookId;
+	private String id;
+	private String BookName;
+	private List<Books> result = new ArrayList<Books>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		user = request.getParameter("user");
-		BookId = request.getParameter("bookId");
+		bookId = request.getParameter("bookId");
 		request.setAttribute("user", user);
-		request.setAttribute("bookId", BookId);
+		request.setAttribute("bookId", bookId);
 		try {
 			process();
 		} catch (JSONException e) {
@@ -49,12 +51,12 @@ public class SubmitBook extends HttpServlet {
 		requestDispatcher.forward(request, response);
 	}
 
-	private void process() throws UnsupportedEncodingException, JSONException {
+	public void process() throws JSONException, UnsupportedEncodingException {
+
 		String uname = URLEncoder.encode(user, "UTF-8");
-		String rUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL")
-				+ "_design/User/_search/byUserPass?q=username:@" + uname;
+		String rUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL")+"_design/User/_search/byUserPass?q=username:@"
+				+ uname;
 		HttpConnection obj2 = new HttpConnection();
-		String id = null;
 		String str2 = obj2.fetchDetails(rUrl);
 		JSONObject res1 = new JSONObject(str2);
 		JSONArray jsonResArr1 = res1.getJSONArray("rows");
@@ -64,7 +66,7 @@ public class SubmitBook extends HttpServlet {
 
 			JSONObject jsonResElem1 = jsonResArr1.getJSONObject(0);
 			id = jsonResElem1.getString("id");
-			System.out.println("THE id is" + id);
+			System.out.println("The id is" + id);
 		}
 		String idDemo = URLEncoder.encode(id, "UTF-8");
 		String restUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL") + idDemo;
@@ -75,29 +77,13 @@ public class SubmitBook extends HttpServlet {
 		int iJsonResArrSize = jsonRes.length();
 		for (int i = 0; i < iJsonResArrSize; i++) {
 			JSONObject jsonResElements = jsonRes.getJSONObject(i);
-			try {
-				String BookDemo = jsonResElements.getString("BookId");
-				if (BookDemo.equals(BookId)) {
-					jsonResElements.remove("BookId");
-					jsonResElements.remove("BookName");
-				}
-			} catch (JSONException e) {
-				System.out.println("Error--");
+			if (jsonResElements.has("BookId")) {
+				BookName = jsonResElements.getString("BookName");
+				bookId = jsonResElements.getString("BookId");
+				result.add(new Books(BookName,bookId));
 			}
+
 		}
-		String requestUrl = HttpConnection.getProperties().getProperty("CLOUDANT_URL");
-		HttpPost obj3 = new HttpPost();
-		obj3.sendPostRequest(requestUrl, res);
-		String restUrl2 = HttpConnection.getProperties().getProperty("CLOUDANT_URL") + BookId;
-		HttpConnection obj5 = new HttpConnection();
-		String str4 = obj5.fetchDetails(restUrl2);
-		JSONObject res3 = new JSONObject(str4);
-		res3.remove("Flag");
-		res3.put("Flag", "0");
-		String requestUrl5 = HttpConnection.getProperties().getProperty("CLOUDANT_URL");
-		HttpPost obj6 = new HttpPost();
-		obj6.sendPostRequest(requestUrl5, res3);
 
 	}
-
 }

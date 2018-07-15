@@ -1,4 +1,4 @@
-package entities;
+package com.msc.project.library.entities;
 
 public class Items {
 	public String Author;

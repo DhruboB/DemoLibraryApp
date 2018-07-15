@@ -9,7 +9,7 @@
         </welcome-file-list>
   <servlet>
     <servlet-name>Login</servlet-name>
-    <servlet-class>example.nosql.Login</servlet-class>
+    <servlet-class>com.msc.project.library.controller.Login</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>Login</servlet-name>

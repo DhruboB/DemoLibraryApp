@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.utility;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

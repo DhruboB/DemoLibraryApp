@@ -1,4 +1,4 @@
-package example.nosql;
+package com.msc.project.library.utility;
 
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 
 public class HttpPost {
-	HttpURLConnection sendPostRequest(String requestUrl, JSONObject payload) {
+	public void sendPostRequest(String requestUrl, JSONObject payload) {
 	    try {
 	    	URL url=new URL(requestUrl);
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -34,7 +34,6 @@ public class HttpPost {
 	    } catch (Exception e) {
 	            throw new RuntimeException(e.getMessage());
 	    }
-		return null;
 	}
 
 }
