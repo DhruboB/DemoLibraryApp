@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.msc.project.library.entities.Books;
+import com.msc.project.library.entities.Book;
 import com.msc.project.library.utility.HttpConnection;
 
 @WebServlet("/EditProfile")
@@ -26,7 +26,7 @@ public class EditProfile extends HttpServlet {
 	private String bookId;
 	private String id;
 	private String BookName;
-	private List<Books> result = new ArrayList<Books>();
+	private List<Book> result = new ArrayList<Book>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -47,7 +47,7 @@ public class EditProfile extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("itemList", result);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("MyProfile.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("profile.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
@@ -80,7 +80,7 @@ public class EditProfile extends HttpServlet {
 			if (jsonResElements.has("BookId")) {
 				BookName = jsonResElements.getString("BookName");
 				bookId = jsonResElements.getString("BookId");
-				result.add(new Books(BookName,bookId));
+				result.add(new Book(BookName,bookId));
 			}
 
 		}

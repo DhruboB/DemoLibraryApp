@@ -1,7 +1,7 @@
 package com.msc.project.library.entities;
 
-public class Books {
-public String Books;
+public class Book {
+public String Book;
 private String bookId;
 
 public String getBookId() {
@@ -13,20 +13,20 @@ public void setBookId(String bookId) {
 }
 
 public String getBooks() {
-	return Books;
+	return Book;
 }
 
 public void setBooks(String books) {
-	Books = books;
+	Book = books;
 }
 
-public Books(String books,String bookId) {
+public Book(String books,String bookId) {
 	super();
-	this.Books = books;
+	this.Book = books;
 	this.bookId = bookId;
 }
 
-public Books() {
+public Book() {
 	super();
 	// TODO Auto-generated constructor stub
 }

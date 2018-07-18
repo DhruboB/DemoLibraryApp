@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 				}
 				else{
 					request.setAttribute("err","Username or password incorrect");
-				    String strViewPage="/OnlineBookStoreWebApp/Newindex.jsp";
+				    String strViewPage="/OnlineBookStoreWebApp/index.jsp";
 				    RequestDispatcher dispatcher = request.getRequestDispatcher(strViewPage);
 				    dispatcher.forward(request, response);
 				}

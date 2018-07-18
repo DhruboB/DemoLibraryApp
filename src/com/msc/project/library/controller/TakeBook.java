@@ -64,7 +64,7 @@ public class TakeBook extends HttpServlet {
 		HttpConnection obj5 = new HttpConnection();
 		String str3 = obj5.fetchDetails(restUrlid);
 		JSONObject res2 = new JSONObject(str3);
-		JSONArray books = res2.getJSONArray("Books");
+		JSONArray books = res2.getJSONArray("Book");
 		JSONObject obbj = new JSONObject();
 		obbj.put("BookId", BookId);
 		obbj.put("BookName", BookName);

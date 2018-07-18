@@ -68,7 +68,7 @@ public class Signup extends HttpServlet {
 			JSONArray list = new JSONArray();
 			json.put("username", user);
 			json.put("password", pass);
-			json.put("Books", list);
+			json.put("Book", list);
 			System.out.println("Json list"+json.toString());
 			payload=json;
 			
@@ -79,7 +79,7 @@ public class Signup extends HttpServlet {
 		
 		try {
 			process();
-			String strViewPage="/OnlineBookStoreWebApp/Newindex.jsp";
+			String strViewPage="/OnlineBookStoreWebApp/index.jsp";
 		    RequestDispatcher dispatcher = request.getRequestDispatcher(strViewPage);
 		    dispatcher.forward(request, response);
 			

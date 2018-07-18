@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.msc.project.library.entities.NewItems;
+import com.msc.project.library.entities.Comment;
 import com.msc.project.library.utility.HttpConnection;
 
 @WebServlet("/IssueBook")
@@ -33,7 +33,7 @@ public class IssueBook extends HttpServlet {
 	private String setFlag;
 	private String name;
 	private String str1;
-	private List<NewItems> result = new ArrayList<NewItems>();
+	private List<Comment> result = new ArrayList<Comment>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -83,7 +83,7 @@ public class IssueBook extends HttpServlet {
 			JSONObject jsonResElements = jsonRes.getJSONObject(i);
 			name = jsonResElements.getString("name");
 			comment = jsonResElements.getString("comment");
-			result.add(new NewItems(name, comment));
+			result.add(new Comment(name, comment));
 
 		}
 

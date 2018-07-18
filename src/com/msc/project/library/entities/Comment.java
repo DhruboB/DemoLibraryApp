@@ -1,28 +1,34 @@
 package com.msc.project.library.entities;
 
-public class NewItems {
-	public String comments;
-	public String name;
+public class Comment {
 	
+	public String comment;
+	public String name;
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getComments() {
-		return comments;
+		return comment;
 	}
+
 	public void setComments(String comments) {
-		this.comments = comments;
+		this.comment = comments;
 	}
-	public NewItems(String name,String comments) {
+
+	public Comment(String name, String comments) {
 		super();
-		this.name=name;
-		this.comments = comments;
+		this.name = name;
+		this.comment = comments;
 	}
-	public NewItems() {
+
+	public Comment() {
 		super();
 	}
-	
+
 }

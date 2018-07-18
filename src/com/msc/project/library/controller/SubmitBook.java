@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.msc.project.library.entities.Books;
+import com.msc.project.library.entities.Book;
 import com.msc.project.library.utility.HttpConnection;
 import com.msc.project.library.utility.HttpPost;
 
@@ -25,7 +25,7 @@ import com.msc.project.library.utility.HttpPost;
 public class SubmitBook extends HttpServlet {
 	private String user;
 	private String BookId;
-	private static List<Books> result = new ArrayList<Books>();
+	private static List<Book> result = new ArrayList<Book>();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -47,7 +47,7 @@ public class SubmitBook extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("itemList", result);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("MyProfile.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("profile.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
@@ -73,7 +73,7 @@ public class SubmitBook extends HttpServlet {
 		HttpConnection obj1 = new HttpConnection();
 		String str1 = obj1.fetchDetails(restUrl);
 		JSONObject res = new JSONObject(str1);
-		JSONArray jsonRes = res.getJSONArray("Books");
+		JSONArray jsonRes = res.getJSONArray("Book");
 		int iJsonResArrSize = jsonRes.length();
 		for (int i = 0; i < iJsonResArrSize; i++) {
 			JSONObject jsonResElements = jsonRes.getJSONObject(i);
